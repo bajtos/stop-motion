@@ -29,7 +29,8 @@ done
 
 ffmpeg -y -r "$fps" -f concat -safe 0 -i "$tmp" \
   -vf "scale=trunc(iw/2)*2:trunc(ih/2)*2" \
-  -c:v libx264 -pix_fmt yuv420p \
+  -c:v libx264 -profile:v high -level 4.1 -pix_fmt yuv420p \
+  -movflags +faststart \
   "$output"
 
 echo "Created $output"
